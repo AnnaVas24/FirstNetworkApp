@@ -17,7 +17,7 @@ class ActivityViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        setupUIWithAlamofire()
     }
  
 }
@@ -29,18 +29,37 @@ extension ActivityViewController {
         NetworkingManager.shared.fetchActivity(url: apiLink) { result in
             switch result {
             case .success(let activity):
+                self.activityIndicator.stopAnimating()
                 self.detailsLabel.text = """
 Activity: \(activity.activity)
 Type: \(activity.type)
 Participants: \(activity.participants)
 Price: \(activity.price)
 """
-                self.activityIndicator.stopAnimating()
             case .failure(let error):
                 print(error)
             }
         }
         
         
+    }
+    
+    private func setupUIWithAlamofire() {
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
+        NetworkingManager.shared.fetchDataWithAlamofire(apiLink) { result in
+            switch result {
+            case .success(let activity):
+                self.activityIndicator.stopAnimating()
+                self.detailsLabel.text = """
+Activity: \(activity.activity)
+Type: \(activity.type)
+Participants: \(activity.participants)
+Price: \(activity.price)
+"""
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
