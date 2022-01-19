@@ -78,14 +78,24 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="cRp-ky-oF9">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                             </activityIndicatorView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FOd-Z8-9Up">
+                                <rect key="frame" x="100" y="360" width="175" height="151"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="FOd-Z8-9Up" secondAttribute="height" multiplier="175:151" id="ni9-k3-3sb"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VeR-YY-3m8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="VeR-YY-3m8" firstAttribute="trailing" secondItem="NMq-gl-3g1" secondAttribute="trailing" constant="32" id="JvL-2d-Dd2"/>
                             <constraint firstItem="NMq-gl-3g1" firstAttribute="leading" secondItem="VeR-YY-3m8" secondAttribute="leading" constant="40" id="aTY-Ob-KlB"/>
+                            <constraint firstItem="FOd-Z8-9Up" firstAttribute="leading" secondItem="VeR-YY-3m8" secondAttribute="leading" constant="100" id="acN-1m-yX4"/>
                             <constraint firstItem="cRp-ky-oF9" firstAttribute="centerX" secondItem="Ric-YC-Pwv" secondAttribute="centerX" id="bli-y2-YGq"/>
+                            <constraint firstItem="VeR-YY-3m8" firstAttribute="trailing" secondItem="FOd-Z8-9Up" secondAttribute="trailing" constant="100" id="gdj-hw-bj1"/>
                             <constraint firstItem="cRp-ky-oF9" firstAttribute="centerY" secondItem="Ric-YC-Pwv" secondAttribute="centerY" id="j1z-nr-0fw"/>
+                            <constraint firstItem="VeR-YY-3m8" firstAttribute="bottom" secondItem="FOd-Z8-9Up" secondAttribute="bottom" constant="156" id="jgC-8l-kYS"/>
+                            <constraint firstItem="FOd-Z8-9Up" firstAttribute="centerX" secondItem="Ric-YC-Pwv" secondAttribute="centerX" id="kEJ-IQ-3zi"/>
                             <constraint firstItem="NMq-gl-3g1" firstAttribute="top" secondItem="VeR-YY-3m8" secondAttribute="top" constant="44" id="vlI-ie-Eyx"/>
                         </constraints>
                     </view>
@@ -93,6 +103,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="cRp-ky-oF9" id="7OO-xN-oee"/>
                         <outlet property="detailsLabel" destination="NMq-gl-3g1" id="mUH-lb-dhZ"/>
+                        <outlet property="mainImage" destination="FOd-Z8-9Up" id="3aF-f1-AbT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4cV-4M-TuR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -15,9 +15,11 @@ class ActivityViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
+    @IBOutlet weak var mainImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUIWithAlamofire()
+        setupUI()
     }
  
 }
@@ -36,6 +38,27 @@ Type: \(activity.type)
 Participants: \(activity.participants)
 Price: \(activity.price)
 """
+                switch activity.type {
+                case "education":
+                    self.mainImage.image = UIImage(named: "education_pic")
+                case "recreational":
+                    self.mainImage.image = UIImage(named: "recreational_pic")
+                case "social":
+                    self.mainImage.image = UIImage(named: "social_pic")
+                case "diy":
+                    self.mainImage.image = UIImage(named: "diy_pic")
+                case "charity":
+                    self.mainImage.image = UIImage(named: "charity_pic")
+                case "cooking":
+                    self.mainImage.image = UIImage(named: "cooking_pic")
+                case "relaxation":
+                    self.mainImage.image = UIImage(named: "relaxation_pic")
+                case "music":
+                    self.mainImage.image = UIImage(named: "music_pic")
+                default:
+                    self.mainImage.image = UIImage(named: "busywork_pic")
+                }
+                
             case .failure(let error):
                 print(error)
             }
