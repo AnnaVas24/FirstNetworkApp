@@ -7,6 +7,8 @@
 
 import UIKit
 
+let apiLink = "https://www.boredapi.com/api/activity"
+
 class ActivityViewController: UIViewController {
 
     @IBOutlet weak var detailsLabel: UILabel!
@@ -15,17 +17,30 @@ class ActivityViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+ 
+}
+
+extension ActivityViewController {
+    private func setupUI() {
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
-        NetworkingManager.shared.fetchActivity(url: apiLink) { activity in
-            self.detailsLabel.text = """
+        NetworkingManager.shared.fetchActivity(url: apiLink) { result in
+            switch result {
+            case .success(let activity):
+                self.detailsLabel.text = """
 Activity: \(activity.activity)
 Type: \(activity.type)
 Participants: \(activity.participants)
 Price: \(activity.price)
 """
-            self.activityIndicator.stopAnimating()
+                self.activityIndicator.stopAnimating()
+            case .failure(let error):
+                print(error)
+            }
         }
+        
+        
     }
- 
 }
